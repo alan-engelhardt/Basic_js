@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test</title>
+    <style>
+      #holder {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1em;
+      }
+      article {
+        border: 1px solid red;
+        padding: 1em;
+      }
+      img {
+        max-width: 50%;
+        aspect-ratio: 1/1;
+        object-fit: contain;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="holder"></main>
+
+    <template>
+      <article>
+        <img src="" alt="" />
+        <h2 class="emne"></h2>
+        <p class="pris"></p>
+        <p class="modtaget"></p>
+      </article>
+    </template>
+
+    <script>
+      const endpoint = "https://babushka-dd8a.restdb.io/rest/menu";
+      const mereinfo = { headers: { "x-apikey": "600ec2fb1346a1524ff12de4" } };
+
+      async function hentData() {
+        const response = await fetch(endpoint, mereinfo);
+        const json = await response.json();
+        console.log(json);
+      }
+
+      hentData();
+    </script>
+  </body>
+</html>

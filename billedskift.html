@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>T</title>
+    <style>
+      main {
+        position: relative;
+      }
+      #billede1,
+      #billede2 {
+        display: block;
+        width: 600px;
+        height: 600px;
+      }
+      #billede2 {
+        position: absolute;
+        top: 0;
+      }
+      .tmb {
+        width: 194px;
+        margin-right: 5px;
+        margin-top: 10px;
+      }
+      .fade {
+        opacity: 0;
+        transition: 1s;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <img id="billede1" class="start" src="" alt="billede1" />
+      <img id="billede2" class="temp fade" src="" alt="billede2" />
+      <img class="tmb start" src="" alt="tmb1" />
+      <img class="tmb start" src="" alt="tmb2" />
+      <img class="tmb start" src="" alt="tmb3" />
+    </main>
+    <script>
+      const url = "https://placeimg.com/600/600/";
+      const emner = ["nature", "animals", "arch", "people", "tech"];
+      const startTags = document.querySelectorAll(".start");
+      const billede2Tag = document.querySelector("#billede2");
+
+      function visBilleder() {
+        shuffle(emner);
+        startTags.forEach((img, i) => {
+          img.src = url + emner[i];
+          img.addEventListener("click", skiftBillede);
+        });
+      }
+
+      function skiftBillede() {
+        const stortImgTag = document.querySelector("#billede1");
+        const stortBillede = stortImgTag.src;
+        stortImgTag.src = this.src;
+        billede2Tag.src = stortBillede;
+        billede2Tag.classList.remove("fade");
+        billede2Tag.offsetHeight;
+        billede2Tag.classList.add("fade");
+        this.src = stortBillede;
+      }
+
+      function shuffle(array) {
+        array.forEach((e, i) => {
+          let j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        });
+      }
+      visBilleder();
+    </script>
+  </body>
+</html>

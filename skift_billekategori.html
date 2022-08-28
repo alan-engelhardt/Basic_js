@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Billedskift</title>
+    <style>
+      #popop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: #000000aa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #popop article {
+        /* width: 80vw;
+        height: 80vh; */
+        background-color: red;
+        padding: 2em;
+      }
+      #billede {
+        max-width: 100%;
+      }
+
+      div {
+        background-color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <aside id="popop">
+      <article>
+        <img id="billede" src="https://placeimg.com/600/600/people" alt="people" />
+        <figcaption id="cap">people</figcaption>
+      </article>
+    </aside>
+
+    <script>
+      const kategorier = ["animals", "arch", "people", "nature", "tech"];
+
+      billede.addEventListener("click", skift);
+
+      function skift() {
+        const billedTal = Math.round(Math.random() * 10);
+        const kategoriIndex = Math.round(Math.random() * 4);
+        billede.src = "https://placeimg.com/600/600/" + kategorier[kategoriIndex] + "?t=" + billedTal;
+        billede.alt = kategorier[kategoriIndex] + " nr " + billedTal;
+        cap.textContent = kategorier[kategoriIndex] + " nr " + billedTal;
+      }
+    </script>
+  </body>
+</html>
