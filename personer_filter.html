@@ -56,6 +56,7 @@
         filter = this.dataset.tro;
         document.querySelector(".valgt").classList.remove("valgt");
         this.classList.add("valgt");
+        console.log(filter);
         vis();
       }
 
@@ -63,7 +64,6 @@
         const res = await fetch(url, options);
         const json = await res.json();
         data = json;
-        //console.log(data);
         vis();
       }
 
@@ -72,8 +72,8 @@
         const template = document.querySelector("template").content;
         holder.textContent = "";
         data.forEach((person) => {
-          console.log(filter);
-          if (filter == "alle" || filter == person.troende) {
+          //console.log(filter);
+          if ((filter = "alle" || filter == person.troende)) {
             const klon = template.cloneNode(true);
             klon.querySelector("h2").textContent = person.fornavn + " " + person.efternavn;
             klon.querySelector("p").textContent = person.email;
