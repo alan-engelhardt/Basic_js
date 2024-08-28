@@ -17,7 +17,7 @@
         padding: 0 1em;
       }
       nav {
-        margin-top: 0.5em;
+        margin-bottom: 0.5em;
       }
       .valgt {
         background-color: orange;
@@ -30,7 +30,7 @@
   <body>
     <nav>
       <button data-tro="alle" class="valgt">Alle</button>
-      <button data-tro="ja" class="">Troende</button>
+      <button data-tro="dessert" class="">Desserter</button>
       <button data-tro="nej" class="">Ikke troende</button>
       <button data-tro="tvivler" class="">I tvivl</button>
     </nav>
@@ -56,7 +56,7 @@
         filter = this.dataset.tro;
         document.querySelector(".valgt").classList.remove("valgt");
         this.classList.add("valgt");
-        console.log(filter);
+        //console.log(filter);
         vis();
       }
 
@@ -64,6 +64,7 @@
         const res = await fetch(url, options);
         const json = await res.json();
         data = json;
+        console.log(data);
         vis();
       }
 
@@ -72,8 +73,8 @@
         const template = document.querySelector("template").content;
         holder.textContent = "";
         data.forEach((person) => {
-          //console.log(filter);
-          if ((filter = "alle" || filter == person.troende)) {
+          console.log(filter);
+          if (filter == "alle" || filter == person.troende) {
             const klon = template.cloneNode(true);
             klon.querySelector("h2").textContent = person.fornavn + " " + person.efternavn;
             klon.querySelector("p").textContent = person.email;

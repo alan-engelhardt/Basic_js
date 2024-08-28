@@ -1,0 +1,16 @@
+<script>
+  const id = new URLSearchParams(location.search).get("id");
+  console.log({ id });
+
+  new URLSearchParams(location.search).forEach((value, key) => console.log(key, value));
+
+  const id2 = new URLSearchParams(location.search);
+
+  console.log(id2.has("navn"));
+
+  const usp = new URLSearchParams(location.search);
+
+  for (const [key, value] of usp.entries()) {
+    console.log(`${key}, ${value}`);
+  }
+</script>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Test</title>
+    <title>Personer</title>
     <style>
       #holder {
         display: grid;
@@ -29,13 +29,12 @@
 
       async function hentData() {
         const res = await fetch(url, options);
-        const json = await res.json();
-        data = json;
+        data = await res.json();
         console.log(data);
-        vis();
+        visMineData();
       }
 
-      function vis() {
+      function visMineData() {
         const holder = document.querySelector("#holder");
         const template = document.querySelector("template").content;
         data.forEach((person) => {
