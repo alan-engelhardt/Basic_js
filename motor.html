@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T</title>
+</head>
+
+<body>
+    <h1>Produktliste</h1>
+    <section></section>
+    <template>
+        <h2>Produktnavn kommer her</h2>
+    </template>
+    <script>
+        const skabelon = document.querySelector("template").content;
+        const liste = document.querySelector("section");
+        const endpoint = "https://kea-alt-del.dk/t7/api/products?limit=50&start=5";
+        fetch(endpoint).then(res => res.json()).then(visListe);
+        function visListe(data) {
+            console.log(data);
+            data.forEach(element => {
+                const klon = skabelon.cloneNode(true);
+                klon.querySelector("h2").textContent = element.productdisplayname;
+                liste.appendChild(klon);
+            });
+        }
+    </script>
+</body>
+
+</html>
